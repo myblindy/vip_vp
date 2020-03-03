@@ -6,6 +6,6 @@ namespace vip_vp.Support.Pins
 {
     public class LiteralPin : BasePin
     {
-        public object Literal { get; set; }
+        public override object Value { get; set; }
     }
 }

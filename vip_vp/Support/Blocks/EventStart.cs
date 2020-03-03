@@ -9,9 +9,6 @@ namespace vip_vp.Support.Blocks
     {
         public BaseBlock NextBlock { get; set; }
 
-        public override async Task Run()
-        {
-
-        }
+        public override Task Run() => NextBlock is null ? Task.CompletedTask : NextBlock.Run();
     }
 }

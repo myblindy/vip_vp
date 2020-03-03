@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using vip_vp.Support.Blocks;
+using vip_vp.Support.Pins;
 using vip_vp.Support.State;
 
 namespace vip_vp
@@ -16,19 +17,26 @@ namespace vip_vp
                     ["i"] = 15,
                 },
             };
-            
-            var add=new AddBlock
+
+            m.OnUpdateEvent.NextBlock = new AddBlock
             {
-                
-            }
+                InputPin1 = new VariablePin(m) { VariableName = "i" },
+                InputPin2 = new LiteralPin { Value = 10 },
+                OutputPin = new VariablePin(m) { VariableName = "i" },
+
+                NextBlock = new PrintBlock
+                {
+                    InputPin = new VariablePin(m) { VariableName = "i" },
+                }
+            };
 
             await m.Run(true);
 
             var last = DateTime.MinValue;
             while (true)
             {
-                var now = DateTime.Now;
-                while ((now - last).Milliseconds < 16.6) { }
+                while ((DateTime.Now - last).TotalMilliseconds < 16.6) { }
+                last = DateTime.Now;
 
                 await m.Run(false);
             }

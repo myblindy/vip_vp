@@ -5,4 +5,23 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Update="Support\Blocks\ArithmeticBlocks.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ArithmeticBlocks.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Support\Blocks\ArithmeticBlocks.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ArithmeticBlocks.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
 </Project>

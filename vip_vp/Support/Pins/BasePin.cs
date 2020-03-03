@@ -6,6 +6,6 @@ namespace vip_vp.Support.Pins
 {
     public abstract class BasePin
     {
-        public object Value { get; }
+        public abstract object Value { get; set; }
     }
 }
