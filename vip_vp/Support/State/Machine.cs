@@ -12,12 +12,17 @@ namespace vip_vp.Support.State
         public EventStart OnInitializeEvent { get; } = new EventStart();
         public EventStart OnUpdateEvent { get; } = new EventStart();
 
+        public bool HasQuit { get; private set; }
+
         public async Task Run(bool firstTick)
         {
-            if (firstTick)
-                await OnInitializeEvent.Run();
-            else
-                await OnUpdateEvent.Run();
+            if (!HasQuit)
+                if (firstTick)
+                    await OnInitializeEvent.Run();
+                else
+                    await OnUpdateEvent.Run();
         }
+
+        public void Quit() => HasQuit = true;
     }
 }

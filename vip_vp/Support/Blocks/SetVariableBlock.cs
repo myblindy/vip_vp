@@ -6,16 +6,17 @@ using vip_vp.Support.Pins;
 
 namespace vip_vp.Support.Blocks
 {
-    public class PrintBlock : BaseBlock
+    public class SetVariableBlock : BaseBlock
     {
         public BaseBlock NextBlock { get; set; }
 
         public BasePin InputPin { get; set; }
+        public VariablePin OutputPin { get; set; }
 
         public override async Task Run()
         {
             await InputPin.Run();
-            Console.WriteLine(InputPin.Value);
+            OutputPin.Value = InputPin.Value;
 
             if (!(NextBlock is null))
                 await NextBlock.Run();
