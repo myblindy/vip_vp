@@ -2,18 +2,24 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using vip_vp.Support.Blocks.Attributes;
 using vip_vp.Support.Pins;
 
 namespace vip_vp.Support.Blocks
 {
     public class BatchedForRangeBlock : BaseBlock
     {
+        [InputPin]
         public BasePin FromInputPin { get; set; }
+        [InputPin]
         public BasePin ToInputPin { get; set; }
+        [InputPin]
         public BasePin IncrementInputPin { get; set; }
+        [InputPin]
         public BasePin BatchSizeInputPin { get; set; }
 
-        public LiteralPin IndexOutputPin { get; set; } = new LiteralPin();
+        [OutputPin]
+        public LiteralPin IndexOutputPin { get; } = new LiteralPin();
 
         public BaseBlock LoopBlock { get; set; }
         public BaseBlock NextBlock { get; set; }

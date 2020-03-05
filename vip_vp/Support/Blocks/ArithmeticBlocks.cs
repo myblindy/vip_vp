@@ -2,14 +2,18 @@
 
 using System.Threading.Tasks;
 using vip_vp.Support.Pins;
+using vip_vp.Support.Blocks.Attributes;
 
 namespace vip_vp.Support.Blocks
 {
 			public class AddBlock : BaseBlock
 		{
+            [InputPin]
 			public BasePin InputPin1 { get; set; }
+            [InputPin]
 			public BasePin InputPin2 { get; set; }
             
+            [OutputPin]
 			public LiteralPin OutputPin { get; } = new LiteralPin();
 
 			public override async Task Run() 
@@ -22,9 +26,12 @@ namespace vip_vp.Support.Blocks
 		}
 			public class SubtractBlock : BaseBlock
 		{
+            [InputPin]
 			public BasePin InputPin1 { get; set; }
+            [InputPin]
 			public BasePin InputPin2 { get; set; }
             
+            [OutputPin]
 			public LiteralPin OutputPin { get; } = new LiteralPin();
 
 			public override async Task Run() 
@@ -37,9 +44,12 @@ namespace vip_vp.Support.Blocks
 		}
 			public class MultiplyBlock : BaseBlock
 		{
+            [InputPin]
 			public BasePin InputPin1 { get; set; }
+            [InputPin]
 			public BasePin InputPin2 { get; set; }
             
+            [OutputPin]
 			public LiteralPin OutputPin { get; } = new LiteralPin();
 
 			public override async Task Run() 
@@ -53,10 +63,14 @@ namespace vip_vp.Support.Blocks
 	
     public class DivideBlock : BaseBlock
     {
+        [InputPin]
         public BasePin InputPin1 { get; set; }
+        [InputPin]
         public BasePin InputPin2 { get; set; }
 
+        [OutputPin]
         public LiteralPin QuotientOutputPin { get; } = new LiteralPin();
+        [OutputPin]
         public LiteralPin RemainderOutputPin { get; } = new LiteralPin();
 
         public override async Task Run()
